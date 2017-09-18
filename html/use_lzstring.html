@@ -1,0 +1,34 @@
+<html>
+<head>
+    <style>
+    .clearBoth { clear:both; margin:2px; }
+    .btnClick { width:100px; cursor:pointer; border: 1px solid rgba(120,120,120,1); text-align:center; padding:2px; }
+    </style>
+</head>
+<body>
+    <div class="clearBoth">
+        Input Text : <input id="getText"></input>
+    </div>
+    <div class="clearBoth">
+        Size of Compressed Text : <input id="compressedText"></input>
+    </div>
+    <div class="clearBoth">
+        Decompressed Text : <input id="deCompressedText"></input>
+    </div>
+    <div id="btn" class="clearBoth btnClick">Click</div>
+    
+    <script language="javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script language="javascript" src="lz-string/1.4.4/lz-string.js"></script>
+    <script>
+    $(function() {
+        $('#getText').val('This is my compression test.');
+        
+        $('#btn').click(function() {
+            var compressedText = LZString.compressToUTF16($('#getText').val());
+            $('#compressedText').val(compressedText.length);
+            $('#deCompressedText').val(LZString.decompressFromUTF16(compressedText));
+        });
+    });
+    </script>
+</body>
+</html>
